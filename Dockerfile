@@ -4,6 +4,9 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
+#Note: For debugging: execute the following lines within the docker container
+#RUN apt-get update && apt-get -y install sudo make gcc zlib1g-dev # install dependencies for konto_check compilation
+#RUN cd konto_check && make lib && sudo make install # konto_check
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 RUN apt-get update && apt-get -y install make gcc zlib1g-dev # install dependencies for konto_check compilation
